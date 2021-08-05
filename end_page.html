@@ -47,6 +47,7 @@
       
     </style>
     <script>
+        window.history.forward(1);
         function prohibitpreviouspage(){
 
             if(navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6 ){
@@ -75,5 +76,5 @@
                   document.oncontextmenu = function (){
                     return false;
                     }
-        window.history.forward(1);
+        
     </script>
