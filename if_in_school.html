@@ -6,7 +6,7 @@
         <script src="/scripts/script_inschool.js"></script>
     </head>
     <body>
-      
+      <form method="post" action="{{ url_for('end') }}">
         <div id="container">
             <div class="pagetitle">
                 <center><h1>請問您現在是否還在就學？</h1></center>
@@ -19,7 +19,7 @@
 
             </div>
         </div>
-
+      </form>
         <style>
             html {
                 background-color: #EFEEEA;
