@@ -32,8 +32,8 @@
                 <form name="county" method="post" action="{{ url_for('end') }}">
                   <center><h1>請問您住在哪個縣市？</h1>
                     <div>
-                      <p><select  onChange="renew(this.selectedIndex);">
-                          <option value="臺北市">臺北市
+                      <p><select  onChange="renew(this.selectedIndex);" required>
+                          <option value="臺北市" selected>臺北市
                           <option value="新北市">新北市
                           <option value="桃園市">桃園市
                           <option value="臺中市">臺中市
