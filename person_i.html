@@ -12,10 +12,10 @@
           <div id="main">
             <form method="post" action="{{ url_for('end') }}">
               <label for="gender">性別：</label>
-                <select name="gender" id="gender">
-                  <option value="male">男</option>
+                <select name="gender" id="gender" required>
+                  <option value="male" >男</option>
                   <option value="female">女</option>
-                  <option value="female">不願透露</option>
+                  <option value="N">不願透露</option>
             
                 </select>
             
@@ -23,7 +23,7 @@
               </div>
                 <h1>請問您是民國哪一年出生的？</h1>
                 <div id="main">
-                  <input type="text" name="age" placeholder="例：80"></center>
+                  <input type="text" name="age" placeholder="例：80" required></center>
 
                 </div>
             </form>
@@ -61,7 +61,7 @@
                 </div>
               <div  class="pagetitle">     
                     <center><p><h1>請問您住在哪個鄉/鎮／區？</h1>
-                    <p><select name="town" >
+                    <p><select name="town" required>
                         <option value="">請選取居住縣市</center>
                       </select></p>
                   </form>
