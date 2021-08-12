@@ -10,12 +10,12 @@
         <div class="pagetitle">
           <center><h1>請問您的性別是？</h1>
           <div id="main">
-            <form method="post" action="{{ url_for('end') }}">
+            <form name="per" method="post" action="https://backend-dot-par2021.uk.r.appspot.com/background-data">
               <label for="gender">性別：</label>
-                <select name="gender" id="gender" required>
+                <select name="gender" id="gender">
                   <option value="male">男</option>
                   <option value="female">女</option>
-                  <option value="N">不願透露</option>
+                  <option value="female">不願透露</option>
             
                 </select>
             
@@ -23,13 +23,13 @@
               </div>
                 <h1>請問您是民國哪一年出生的？</h1>
                 <div id="main">
-                  <input type="text" name="age" placeholder="例：80" required></center>
+                  <input type="text" name="age" placeholder="例：80"></center>
 
                 </div>
-            </form>
+            
 
               <div class="pagetitle">
-                <form name="county" method="post" action="{{ url_for('end') }}">
+                
                   <center><h1>請問您住在哪個縣市？</h1>
                     <div>
                       <p><select  onChange="renew(this.selectedIndex);" required>
@@ -61,7 +61,7 @@
                 </div>
               <div  class="pagetitle">     
                     <center><p><h1>請問您住在哪個鄉/鎮／區？</h1>
-                    <p><select name="town" required>
+                    <p><select name="town" >
                         <option value="">請選取居住縣市</center>
                       </select></p>
                   </form>
@@ -120,9 +120,24 @@
                 history.forward();
                 setTimeout("fn_forward()",1);
                 }
+
+
+
               function url() {
-                return window.location.assign("https://tw-uni-pub-c-rand-dot-par2021.uk.r.appspot.com")
+
+                int a = 0;
+                a = (int)(Math.random()*10)+1;
+                if (a<=5){
+                  return window.location.assign("https://tw-uni-pub-c-rand-dot-par2021.uk.r.appspot.com")
+                }else{
+                  return window.location.assign("https://tw-uni-pri-c-rand-dot-par2021.uk.r.appspot.com")
+
                 }
+              }
+
+
+
+
                 document.body.onkeydown = function(e){
                 var keyCode = e.keyCode || e.which || e.charCode;
                 var ctrlKey = e.ctrlKey || e.metaKey;
@@ -164,8 +179,8 @@
 
                 function renew(index){
                   for(var i=0;i<department[index].length;i++)
-                    document.county.town.options[i]=new Option(department[index][i], department[index][i]);	// 設定新選項
-                  document.county.town.length=department[index].length;	// 刪除多餘的選項
+                    document.per.town.options[i]=new Option(department[index][i], department[index][i]);	// 設定新選項
+                  document.per.town.length=department[index].length;	// 刪除多餘的選項
                 }
 
 
