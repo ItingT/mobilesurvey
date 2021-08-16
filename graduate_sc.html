@@ -6,7 +6,7 @@
         <script type="text/javascript" src="script_nowstudy.js"></script>
     </head>
     <body>
-      <form action="" method="post">
+      <!--<form action="" method="post">-->
         <div id="container">
           <div class="pagetitle">
             <center><h1>請問您的最高學歷是？</h1></center>
@@ -15,15 +15,15 @@
           <div id="main">
 
 
-              <center><p><button onclick="N()" class="button" type="submit" name ="edu" value="el">國小</button>  
-                  <button onclick="N()" class="button" type="submit" name ="edu" value="jh">國中</button>  
-                  <button onclick="N()" class="button" type="submit" name ="edu" value="sh">高中</button></p> </center>  
-              <center><p><button onclick="N()" class="button" type="submit" name ="edu" value="th">高職</button>   
-                    <button onclick="N()" class="button" type="submit" name ="edu" value="fy">五專</button>   
-                    <button onclick="MA()" class="button" type="submit" name ="edu" value="uni">大學</button>   
-                    <button onclick="MA()" class="button" type="submit" name ="edu" value="MA">研究所以上</button></p>  </center> 
+              <center><p><button onclick="N()" class="button" type="submit" name ="enroll">國小</button>  
+                  <button onclick="N()" class="button" type="submit" name ="enroll">國中</button>  
+                  <button onclick="N()" class="button" type="submit" name ="enroll">高中</button></p> </center>  
+                  <center><p><button onclick="N()" class="button" type="submit" name ="enroll">高職</button>   
+                <button onclick="N()" class="button" type="submit" name ="enroll">五專</button>   
+                <button onclick="MS()" class="button" type="submit" name ="enroll">大學</button>   
+                <button onclick="MS()" class="button" type="submit" name ="enroll">研究所以上</button></p>  </center> 
 
-           </div>
+          </div>
 
 
         </div>
@@ -76,7 +76,7 @@
                 history.forward();
                 setTimeout("fn_forward()",1);
                 }
-              function MA(){
+              function MS(){
                 return window.location.assign("https://itingt.github.io/mobilesurvey/school_info_g")
                 }
               function N(){

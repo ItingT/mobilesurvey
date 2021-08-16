@@ -6,15 +6,16 @@
         <script src="/scripts/script_inschool.js"></script>
     </head>
     <body>
-      <form method="post" action="{{ url_for('end') }}">
+      <form method="post" action="https://backend-dot-par2021.uk.r.appspot.com/background-data">
         <div id="container">
             <div class="pagetitle">
                 <center><h1>請問您現在是否還在就學？</h1></center>
 
             </div>
             <div>
-                <center><button onclick="inschool()" class="button" type="submit" name="inschool" value="Y">是</button>
-                <button onclick="graduate()" class="button" type="submit" name="inschool" value="N">否</button></center>
+                
+                <center><button onclick="inschool()" class="button" type="submit" value="enroll">是</button>
+                <button onclick="graduate()" class="button" type="submit" value="graduate">否</button></center>
            
 
             </div>

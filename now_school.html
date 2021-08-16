@@ -6,27 +6,27 @@
         <script type="text/javascript" src="script_nowstudy.js"></script>
     </head>
     <body>
-        <form method="post" action="{{ url_for('end') }}">
-            <div id="container">
-              <div class="pagetitle">
-                <center><h1>請問您現在就讀的是？</h1></center>
+      <form method="post" action="https://backend-dot-par2021.uk.r.appspot.com/background-data">
+        <div id="container">
+          <div class="pagetitle">
+            <center><h1>請問您現在就讀的是？</h1></center>
+    
+          </div>
+          <div id="main">
 
-              </div>
-              <div id="main">
 
+             <center><p><button onclick="N()" class="button" type="submit" value ="ele">國小</button>   
+                <button onclick="N()" class="button" type="submit" value ="jh">國中</button>   
+                <button onclick="SH()" class="button" type="submit" value ="sh">高中</button></p>   </center>
+              <center><p><button onclick="N()" class="button" type="submit" value ="th">高職</button>   
+                <button onclick="N()" class="button" type="submit" value ="fy">五專</button>   
+                <button onclick="N()" class="button" type="submit" value ="uni">大學</button>   
+                <button onclick="MS()" class="button" type="submit" value ="MS">研究所以上</button></p></center>   
 
-                 <center><p><button onclick="N()" class="button" type="submit" name="edu" value ="el">國小</button>   
-                    <button onclick="N()" class="button" type="submit" name="edu" value ="jh">國中</button>   
-                    <button onclick="SH()" class="button" type="submit" name="edu" value ="sh">高中</button></p>   </center>
-                  <center><p><button onclick="N()" class="button" type="submit" name="edu" value ="th">高職</button>   
-                    <button onclick="N()" class="button" type="submit" name="edu" value ="fy">五專</button>   
-                    <button onclick="N()" class="button" type="submit" name="edu" value ="uni">大學</button>   
-                    <button onclick="MA()" class="button" type="submit" name="edu" value ="MA">研究所以上</button></p></center>   
-
-              </div>
-        </form>
-
+          </div>
+      
         </div>
+      </form>
             <style>
                 html {
                     background-color: #EFEEEA;
@@ -82,7 +82,7 @@
               function SH() {
                 return window.location.assign("https://itingt.github.io/mobilesurvey/school_info_i")
                 }
-              function MA(){
+              function MS(){
                 return window.location.assign("https://itingt.github.io/mobilesurvey/school_info_g")
                 }
                 function N(){

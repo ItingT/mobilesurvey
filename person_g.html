@@ -1,75 +1,69 @@
-<!--已畢業-->
+<!--高中-->
 
 <html>
-    <head>
-        <title>臺灣大學聲望調查</title>
+  <head>
+    <title>臺灣大學聲望調查</title>
+  </head>
 
-    </head>
-    <body>
-      <div id="container">
+  <body>
+    <div id="container">
+      <div class="pagetitle">
+        <form name="county" method="post" action="https://backend-dot-par2021.uk.r.appspot.com/background-data"> 
+        <center><h1>請問您的性別是？</h1>
+        <div id="main">
+          <label for="gender">性別：</label>
+            <select name="gender" id="gender" required>
+              <option value="male" >男</option>
+              <option value="female">女</option>
+              <option value="N">不願透露</option>
+            </select>
+        </div>
+       
+        <h1>請問您是民國哪一年出生的？</h1>
+        <div id="main">
+          <input type="text" name="age" placeholder="例：80" required></center>
+        </div>
+
         <div class="pagetitle">
-          <center><h1>請問您的性別是？</h1>
-          <div id="main">
-            <form name="per" method="post" action="https://backend-dot-par2021.uk.r.appspot.com/background-data">
-              <label for="gender">性別：</label>
-                <select name="gender" id="gender">
-                  <option value="male">男</option>
-                  <option value="female">女</option>
-                  <option value="female">不願透露</option>
-            
-                </select>
-            
-
+          
+            <center><h1>請問您住在哪個縣市？</h1>
+              <div>
+                <p><select  onChange="renew(this.selectedIndex);" required>
+                  <option value="臺北市" selected>臺北市
+                  <option value="新北市">新北市
+                  <option value="桃園市">桃園市
+                  <option value="臺中市">臺中市
+                  <option value="臺南市">臺南市
+                  <option value="高雄市">高雄市
+                  <option value="基隆市">基隆市
+                  <option value="新竹市">新竹市
+                  <option value="新竹市">嘉義市
+                  <option value="新竹縣">新竹縣
+                  <option value="苗栗縣">苗栗縣
+                  <option value="彰化縣">彰化縣
+                  <option value="南投縣">南投縣
+                  <option value="雲林縣">雲林縣
+                  <option value="嘉義縣">嘉義縣
+                  <option value="屏東縣">屏東縣
+                  <option value="宜蘭縣">宜蘭縣
+                  <option value="花蓮縣">花蓮縣
+                  <option value="臺東縣">臺東縣
+                  <option value="澎湖縣">澎湖縣
+                  <option value="金門縣">金門縣
+                  <option value="連江縣">連江縣
+                </select></center></p>
               </div>
-                <h1>請問您是民國哪一年出生的？</h1>
-                <div id="main">
-                  <input type="text" name="age" placeholder="例：80"></center>
-
-                </div>
-            
-
-              <div class="pagetitle">
-                
-                  <center><h1>請問您住在哪個縣市？</h1>
-                    <div>
-                      <p><select name =county onChange="renew(this.selectedIndex);" required>
-                          <option value="臺北市" selected>臺北市
-                          <option value="新北市">新北市
-                          <option value="桃園市">桃園市
-                          <option value="臺中市">臺中市
-                          <option value="臺南市">臺南市
-                          <option value="高雄市">高雄市
-                          <option value="基隆市">基隆市
-                          <option value="新竹市">新竹市
-                          <option value="新竹市">嘉義市
-                          <option value="新竹縣">新竹縣
-                          <option value="苗栗縣">苗栗縣
-                          <option value="彰化縣">彰化縣
-                          <option value="南投縣">南投縣
-                          <option value="雲林縣">雲林縣
-                          <option value="嘉義縣">嘉義縣
-                          <option value="屏東縣">屏東縣
-                          <option value="宜蘭縣">宜蘭縣
-                          <option value="花蓮縣">花蓮縣
-                          <option value="臺東縣">臺東縣
-                          <option value="澎湖縣">澎湖縣
-                          <option value="金門縣">金門縣
-                          <option value="連江縣">連江縣
-
-                        </select></center></p>
-                      </div>
-                </div>
+        
               <div  class="pagetitle">     
                     <center><p><h1>請問您住在哪個鄉/鎮／區？</h1>
-                    <p><select name="town" >
+                    <p><select name="town" required>
                         <option value="">請選取居住縣市</center>
                       </select></p>
-                  </form>
+                  
               </div>
-
-
+            
               <center><p><button onclick="url()" class="button" type="submit" name ="submit">確認</button></p></center>
-
+            </form>
 
             </div>
 
@@ -125,7 +119,7 @@
 
               function url() {
 
-                int a = 0;
+                var a;
                 a = (int)(Math.random()*10)+1;
                 if (a<=5){
                   return window.location.assign("https://tw-uni-pub-c-rand-dot-par2021.uk.r.appspot.com")
@@ -134,6 +128,21 @@
 
                 }
               }
+
+              $.ajax({
+
+                  method:"POST",
+                  url:"https://backend-dot-par2021.uk.r.appspot.com/background-data",
+                  data:{
+
+                    surveyGroup: "TaiwanUniversities",
+                    surveyType: "str",
+                    }
+
+                  }).done(function(msg){
+                    alert()
+
+                  })
 
 
 
@@ -179,8 +188,8 @@
 
                 function renew(index){
                   for(var i=0;i<department[index].length;i++)
-                    document.per.town.options[i]=new Option(department[index][i], department[index][i]);	// 設定新選項
-                  document.per.town.length=department[index].length;	// 刪除多餘的選項
+                    document.county.town.options[i]=new Option(department[index][i], department[index][i]);	// 設定新選項
+                  document.county.town.length=department[index].length;	// 刪除多餘的選項
                 }
 
 
