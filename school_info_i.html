@@ -7,14 +7,16 @@
     </head>
     <body>
       <div id="container">
+        <form method="post" name="schoolName">
         <div class="pagetitle">
           <center><h1>請問您就讀學校的校名是？</h1></center>
-        <center><input type="text" name="school_name" placeholder="例：國立臺灣大學"></center>
+          <center><input type="text" name="school_name" placeholder="例：國立臺灣大學"></center>
           <center><h1>請問您就讀的科系是？</h1></center>
           <center><h5>若無特別分科，請填普通科。</h5></center>
-        <center><input type="text" name="major" placeholder="例：中文系"></center>
+          <center><input type="text" name="major" placeholder="例：中文系"></center>
         </div>
-      <center><button onclick="next()" class="button" type="submit" name ="submit">確認</button></center>
+          <center><button onclick="next()" class="button" type="submit" name ="submit">確認</button></center>
+        </form>
       </div>
 
 
@@ -50,6 +52,19 @@
         
         </style>
         <script>
+            var formData = JSON.stringify($("schoolName").serializeArray());
+              $.ajax({
+                method:"POST",
+                url:"https://backend-dot-par2021.uk.r.appspot.com/background-data",
+
+                data:formData,
+                dataType:"json",
+                contentType : "application/json"
+                }).done(function(msg){
+                    alert()
+                });   
+
+
         function prohibitpreviouspage(){
 
         if(navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6 ){
