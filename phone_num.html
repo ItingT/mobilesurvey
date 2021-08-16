@@ -6,7 +6,7 @@
 
     <body>
      <div id =pagetitle>
-       <form>
+       <form method="post" name="phoneNum">
          <font size ="5">
           <center><h1>請輸入您收到問卷連結的手機號碼</h1>
           <input type="text" name="phone_num" placeholder="例：0900123456" required></center>
@@ -53,6 +53,18 @@
           
         </style>
         <script>
+             var formData = JSON.stringify($("phoneNum").serializeArray());
+                $.ajax({
+
+                  method:"POST",
+                  url:"https://backend-dot-par2021.uk.r.appspot.com/background-data",
+
+                  data:formData,
+                    dataType:"json",
+                    contentType : "application/json"
+                  }).done(function(msg){
+                    alert()
+                  });
               function prohibitpreviouspage(){
 
                 if(navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6 ){
