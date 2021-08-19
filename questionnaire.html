@@ -154,13 +154,14 @@
                     document.mobileSurvey.town.options[i]=new Option(department[index][i], department[index][i]);	// 設定新選項
                   document.mobileSurvey.town.length=department[index].length;	// 刪除多餘的選項
                 }
-
-                var xhr = new XMLHttpRequest();
                 
+                function onSubmit(){
+                  var xhr = new XMLHttpRequest();                
 
-                xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.send(JSON.stringify ($("mobileSurvey").serializeArray()));
+                  xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
+                  xhr.setRequestHeader('Content-Type', 'application/json');
+                  xhr.send(JSON.stringify ($("mobileSurvey").serializeArray()));
+                }
 
   </script>
 
