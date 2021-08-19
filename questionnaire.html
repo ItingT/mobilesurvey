@@ -7,14 +7,14 @@
     <div id=container>
         <form method="post" name="mobileSurvey">
             <h1>請輸入您收到問卷連結的手機號碼</h1>
-            <input type="text" name="phone_num" placeholder="例：0900123456" required>
+            <input type="text" name="phone" placeholder="例：0900123456" required>
             <h1>請問您現在是否還在就學？</h1>
             <p><input type="radio" name="inSchool" value="Yes" required>是</p>
             <p><input type="radio" name="inSchool" value="No" >否</p>
 
             <h1>請問您的最高學歷是？</h1>
 
-            <p><select name="education" required>
+            <p><select name="edu" required>
               <option value="N" selected>未就學
               <option value="el">國小
               <option value="jh">國中
@@ -28,11 +28,11 @@
 
             <h1>請問您就讀學校的校名是？</h1>
             <h5>若已畢業，請填寫您最高學歷的校名。</h5>
-            <input type="text" name="schoolName" placeholder="例：國立臺灣大學">
+            <input type="text" name="schoolName" placeholder="例：國立臺灣大學" required>
 
             <h1>請問您就讀的科系是？</h1>
             <h5>若無特別分科，請填普通科。</h5>
-            <input type="text" name="major" placeholder="例：中文系">
+            <input type="text" name="major" placeholder="例：中文系" required>
 
             <h1>請問您的性別是？</h1>
             <p><input type="radio" name="gender" value="male" required>男</p>
@@ -44,7 +44,7 @@
 
             <h1>請問您住在哪個縣市？</h1>
               <div>
-                <p><select  onChange="renew(this.selectedIndex);" required>
+                <p><select  name = "county" onChange="renew(this.selectedIndex);" required>
                   <option value="臺北市" selected>臺北市
                   <option value="新北市">新北市
                   <option value="桃園市">桃園市
@@ -77,20 +77,50 @@
                     </select></p>
               </div>
 
-              <center><p><button class="button" type="submit" name ="submit">確認</button></p></center>
-            
-
-
-
-
-            
-      
+              <center><p><button class="button" type="submit" name ="submit" onclick="onSubmit()">確認</button></p></center>
         
 
     </div>
 
 
   </body>
+  <style>
+            html {
+                background-color: #EFEEEA;
+              }
+              
+              .pagetitle {
+                  color: #007C89;
+              }
+              
+              .button {
+                background-color: white;
+                border: 2px solid #40383B;
+                border-radius: 12px;
+                color: black;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 24px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+              }
+              
+              .button:hover {
+                background-color: #40383B;
+                color: #ffffff;
+              }
+              #container{
+                margin: 0 auto;
+                border:  0px solid #666;
+                width: 750px;
+                height: 850px;
+              }
+
+
+  </style>
   <script>
 
 
@@ -124,6 +154,13 @@
                     document.mobileSurvey.town.options[i]=new Option(department[index][i], department[index][i]);	// 設定新選項
                   document.mobileSurvey.town.length=department[index].length;	// 刪除多餘的選項
                 }
+
+                var xhr = new XMLHttpRequest();
+                
+
+                xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify ($("mobileSurvey").serializeArray()));
 
   </script>
 
