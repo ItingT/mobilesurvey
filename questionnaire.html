@@ -7,10 +7,13 @@
     <div id=container>
         <form method="post" name="mobileSurvey" id="mobileSurvey">
             <h1>請輸入您收到問卷連結的手機號碼</h1>
-            <input type="text" name="phone" placeholder="例：0900123456" required>
+            <input type="text" name="phone" id="phone" placeholder="例：0900123456" required>
             <h1>請問您現在是否還在就學？</h1>
-            <p><input type="radio" name="inSchool" value="Yes" required>是</p>
-            <p><input type="radio" name="inSchool" value="No" >否</p>
+            <p><select name="inSchool" required>
+              <option value="Yes" selected> 是
+              <option value="No">否
+
+            </select></p>
 
             <h1>請問您的最高學歷是？</h1>
 
@@ -35,9 +38,10 @@
             <input type="text" name="major" placeholder="例：中文系" required>
 
             <h1>請問您的性別是？</h1>
-            <p><input type="radio" name="gender" value="male" required>男</p>
-            <p><input type="radio" name="gender" value="female" >女</p>
-            <p><input type="radio" name="gender" value="N" >不願透露</p>
+            <p><select name="gender" required>
+              <option value="male" selected> 男
+              <option value="female">女
+            </select></p>
 
             <h1>請問您是民國哪一年出生的？</h1>
             <input type="text" name="age" placeholder="例：80" required>
@@ -77,8 +81,8 @@
                     </select></p>
               </div>
 
-              <center><p><button class="button" type="submit" name ="submit" onclick="onSubmit()">確認</button></p></center>
-        
+              <center><p><button class="button" type="button" name ="submit" onclick="onSubmit()">確認</button></p></center>
+        </form>>
 
     </div>
 
@@ -156,15 +160,45 @@
                 }
                 
                 function onSubmit(){
-                  
-                  var formData = new FormData(document.getElementById('mobileSurvey'))
-                  console.log(formData)
-                  Thread.sleep(999999);
 
-                  /*var xhr = new XMLHttpRequest();
+                  var formData = [];
+                  formData.push({
+                    "phone" : document.getElementById("mobileSurvey").elements[0].value,
+                    "inSchool" : document.getElementById("mobileSurvey").elements[1].value,
+                    "edu" : document.getElementById("mobileSurvey").elements[2].value,
+                    "schoolName" : document.getElementById("mobileSurvey").elements[3].value,
+                    "major" : document.getElementById("mobileSurvey").elements[4].value,
+                    "gender" : document.getElementById("mobileSurvey").elements[5].value,
+                    "age" : document.getElementById("mobileSurvey").elements[6].value,
+                    "county" : document.getElementById("mobileSurvey").elements[7].value,
+                    "town" : document.getElementById("mobileSurvey").elements[8].value,
+                    "surveyGroup":  "TaiwanUniversities",
+                    "surveyType":"TaiwanPublicUniversities",
+
+                  });
+                  
+                  if ((document.getElementById("mobileSurvey").elements[1].value == "Yes") & (document.getElementById("mobileSurvey").elements[2].value == "sh")){
+                    
+                    return window.location.assign("https://tw-uni-pub-hs-adpt-dot-par2021.uk.r.appspot.com");
+                    
+                  }else if((document.getElementById("mobileSurvey").elements[1].value == "Yes") & (document.getElementById("mobileSurvey").elements[2].value == "MS")){
+                    
+                    return window.location.assign("https://tw-uni-pub-c-adpt-dot-par2021.uk.r.appspot.com");
+                  }else if((document.getElementById("mobileSurvey").elements[1].value == "No") & (document.getElementById("mobileSurvey").elements[2].value == "MS"|document.getElementById("mobileSurvey").elements[2].value == "uni")){
+                    return window.location.assign("https://tw-uni-pub-c-adpt-dot-par2021.uk.r.appspot.com");
+                  }else{
+                    return window.location.assign("https://itingt.github.io/mobilesurvey/end_page");
+
+                  }
+
+                  
+
+                  console.log(formData);
+
+                  var xhr = new XMLHttpRequest();
                   xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
                   xhr.setRequestHeader('Content-Type', 'application/json');
-                  xhr.send(JSON.stringify (formData ));*/
+                  xhr.send(JSON.stringify (formData ));
                 }
 
   </script>
