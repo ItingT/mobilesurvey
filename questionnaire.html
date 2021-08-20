@@ -5,7 +5,7 @@
   </head>
   <body>
     <div id=container>
-        <form method="post" name="mobileSurvey">
+        <form method="post" name="mobileSurvey" id="mobileSurvey">
             <h1>請輸入您收到問卷連結的手機號碼</h1>
             <input type="text" name="phone" placeholder="例：0900123456" required>
             <h1>請問您現在是否還在就學？</h1>
@@ -44,7 +44,7 @@
 
             <h1>請問您住在哪個縣市？</h1>
               <div>
-                <p><select  name = "county" onChange="renew(this.selectedIndex);" required>
+                <p><select name = "county" onChange="renew(this.selectedIndex);" required>
                   <option value="臺北市" selected>臺北市
                   <option value="新北市">新北市
                   <option value="桃園市">桃園市
@@ -156,11 +156,15 @@
                 }
                 
                 function onSubmit(){
-                  var xhr = new XMLHttpRequest();                
+                  
+                  var formData = new FormData(document.getElementById('mobileSurvey'))
+                  console.log(formData)
+                  Thread.sleep(999999);
 
+                  /*var xhr = new XMLHttpRequest();
                   xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
                   xhr.setRequestHeader('Content-Type', 'application/json');
-                  xhr.send(JSON.stringify ($("mobileSurvey").serializeArray()));
+                  xhr.send(JSON.stringify (formData ));*/
                 }
 
   </script>
