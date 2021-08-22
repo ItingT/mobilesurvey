@@ -1,0 +1,246 @@
+<html>
+  <head>
+    <title>臺灣大學聲望調查</title>
+
+  </head>
+  <body>
+    <div id=container>
+        <form method="post" name="mobileSurvey" id="mobileSurvey">
+            <h1>請輸入您收到問卷連結的手機號碼</h1>
+            <input type="text" name="phone" id="phone" placeholder="例：0900123456" required>
+            <h1>請問您現在是否還在就學？</h1>
+            <p><select name="inSchool" id="inSchool" required>
+              <option value="Yes" selected> 是
+              <option value="No">否
+
+            </select></p>
+
+            <h1>請問您的最高學歷是？</h1>
+
+            <p><select name="edu" id="edu" required>
+              <option value="N" selected>未就學
+              <option value="el">國小
+              <option value="jh">國中
+              <option value="sh">高中
+              <option value="th">高職
+              <option value="fy">五專
+              <option value="uni">大學
+              <option value="MS">研究所以上
+            </select></p>
+
+
+            <h1>請問您就讀學校的校名是？</h1>
+            <h5>若已畢業，請填寫您最高學歷的校名。</h5>
+            <input type="text" name="schoolName" id="schoolName" placeholder="例：國立臺灣大學" required>
+
+            <h1>請問您就讀的科系是？</h1>
+            <h5>若無特別分科，請填普通科。</h5>
+            <input type="text" name="major" id="major" placeholder="例：中文系" required>
+
+            <h1>請問您的性別是？</h1>
+            <p><select name="gender" id="gender" required>
+              <option value="male" selected> 男
+              <option value="female">女
+              <option value="Non">不願透露
+            </select></p>
+
+            <h1>請問您是民國哪一年出生的？</h1>
+            <input type="text" name="age" id="age" placeholder="例：80" required>
+
+            <h1>請問您住在哪個縣市？</h1>
+              <div>
+                <p><select name = "county" id = "county" onChange="renew(this.selectedIndex);" required>
+                  <option value="請選擇居住縣市" selected disabled>請選擇居住縣市
+                  <option value="臺北市">臺北市
+                  <option value="新北市">新北市
+                  <option value="桃園市">桃園市
+                  <option value="臺中市">臺中市
+                  <option value="臺南市">臺南市
+                  <option value="高雄市">高雄市
+                  <option value="基隆市">基隆市
+                  <option value="新竹市">新竹市
+                  <option value="新竹市">嘉義市
+                  <option value="新竹縣">新竹縣
+                  <option value="苗栗縣">苗栗縣
+                  <option value="彰化縣">彰化縣
+                  <option value="南投縣">南投縣
+                  <option value="雲林縣">雲林縣
+                  <option value="嘉義縣">嘉義縣
+                  <option value="屏東縣">屏東縣
+                  <option value="宜蘭縣">宜蘭縣
+                  <option value="花蓮縣">花蓮縣
+                  <option value="臺東縣">臺東縣
+                  <option value="澎湖縣">澎湖縣
+                  <option value="金門縣">金門縣
+                  <option value="連江縣">連江縣
+                </select></p>
+              </div>
+
+              <div  class="pagetitle">
+                <p><h1>請問您住在哪個鄉/鎮／區？</h1>
+                <p><select name="town" id="town" required>
+                    <option value="">請選取居住鄉鎮
+                    </select></p>
+              </div>
+
+              <center><p><button class="button" type="button" name ="submit" onclick="onSubmit()">確認</button></p></center>
+        </form>>
+
+    </div>
+
+
+  </body>
+  <style>
+            html {
+                background-color: #EFEEEA;
+              }
+
+              .pagetitle {
+                  color: #007C89;
+              }
+
+              .button {
+                background-color: white;
+                border: 2px solid #40383B;
+                border-radius: 12px;
+                color: black;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 24px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+              }
+
+              .button:hover {
+                background-color: #40383B;
+                color: #ffffff;
+              }
+              #container{
+                margin: 0 auto;
+                border:  0px solid #666;
+                width: 750px;
+                height: 850px;
+              }
+
+
+  </style>
+  <script>
+
+
+                department=new Array();
+
+                department[1]=["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "南港區", "內湖區", "文山區"];	// 臺北市
+                department[2]=["板橋區", "中和區", "永和區", "土城區", "三峽區", "鶯歌區", "樹林區", "三重區", "蘆洲區", "新莊區", "五股區", "泰山區", "林口區", "八里區", "淡水區", "三芝區", "石門區", "金山區", "萬里區", "汐止區", "瑞芳區", "貢寮區", "平溪區", "雙溪區", "新店區", "深坑區", "石碇區", "坪林區", "烏來區"];	// 新北市
+                department[3]=["桃園區", "八德區", "龜山區", "蘆竹區", "大園區", "大溪區", "中壢區", "平鎮區", "楊梅區", "龍潭區", "新屋區", "觀音區", "復興區"];			// 桃園市
+                department[4]=["中區", "東區", "南區", "西區", "北區", "北屯區", "西屯區", "南屯區", "太平區", "大里區", "霧峰區", "烏日區", "豐原區", "后里區", "石岡區", "東勢區", "和平區", "新社區", "潭子區", "大雅區", "神岡區", "大肚區", "沙鹿區", "龍井區", "梧棲區", "清水區", "大甲區", "外埔區", "大安區"];				// 臺中市
+                department[5]=["中西區", "東區", "南區", "北區", "安平區", "安南區", "永康區", "歸仁區", "新化區", "左鎮區", "玉井區", "楠西區", "南化區", "仁德區", "關廟區", "龍崎區", "官田區", "麻豆區", "佳里區", "西港區", "七股區", "將軍區", "學甲區", "北門區", "新營區", "後壁區", "白河區", "東山區", "六甲區", "下營區", "柳營區", "鹽水區", "善化區", "大內區", "山上區", "新市區", "安定區"];	// 臺南市
+                department[6]=["鹽埕區", "鼓山區", "左營區", "楠梓區", "三民區", "新興區", "前金區", "苓雅區", "前鎮區", "旗津區", "小港區", "鳳山區", "林園區", "大寮區", "大樹區", "大社區", "仁武區", "鳥松區", "岡山區", "橋頭區", "燕巢區", "田寮區", "阿蓮區", "路竹區", "湖內區", "茄萣區", "永安區", "彌陀區", "梓官區", "旗山區", "美濃區", "六龜區", "甲仙區", "杉林區", "內門區", "茂林區", "桃源區", "那瑪夏區"];	// 高雄市
+                department[7]=["中正區", "七堵區", "暖暖區", "仁愛區", "中山區", "安樂區", "信義區"];			// 基隆市
+                department[8]=["東區", "北區", "香山區"];	// 新竹市
+                department[9]=["東區", "西區"];	// 嘉義市
+                department[10]=["竹北市", "關西鎮", "新埔鎮", "竹東鎮", "湖口鄉", "橫山鄉", "新豐鄉", "芎林鄉", "寶山鄉", "北埔鄉", "峨眉鄉", "尖石鄉"];	// 新竹縣
+                department[11]=["苗栗市", "頭份市", "苑裡鎮", "通霄鎮", "竹南鎮", "後龍鎮", "卓蘭鎮", "大湖鄉", "公館鄉", "銅鑼鄉", "南庄鄉", "頭屋鄉", "三義鄉", "西湖鄉", "造橋鄉", "三灣鄉", "獅潭鄉", "泰安鄉"];	// 苗栗縣
+                department[12]=["彰化市", "員林市", "鹿港鎮", "和美鎮", "北斗鎮", "溪湖鎮", "田中鎮", "二林鎮", "線西鄉", "伸港鄉", "福興鄉", "秀水鄉", "花壇鄉", "芬園鄉", "大村鄉", "埔心鄉", "永靖鄉", "社頭鄉", "二水鄉", "田尾鄉", "埤頭鄉", "芳苑鄉", "大城鄉", "竹塘鄉", "溪州鄉"];	// 彰化縣
+                department[13]=["南投市", "草屯鎮", "埔里鎮", "竹山鎮", "集集鎮", "名間鄉", "鹿谷鄉", "中寮鄉", "魚池鄉", "國姓鄉", "水里鄉", "信義鄉", "仁愛鄉"];	// 南投縣
+                department[14]=["斗六市", "斗南鎮", "虎尾鎮", "西螺鎮", "土庫鎮", "北港鎮", "古坑鄉", "大埤鄉", "莿桐鄉", "林內鄉", "二崙鄉", "崙背鄉", "麥寮鄉", "東勢鄉", "褒忠鄉", "臺西鄉", "元長鄉", "四湖鄉", "口湖鄉", "水林鄉"];	// 雲林縣
+                department[15]=["太保市", "朴子市", "布袋鎮", "大林鎮", "民雄鄉", "溪口鄉", "新港鄉", "六腳鄉", "東石鄉", "義竹鄉", "鹿草鄉", "水上鄉", "中埔鄉", "竹崎鄉", "梅山鄉", "番路鄉", "大埔鄉", "阿里山鄉"];	// 嘉義縣
+                department[16]=["屏東市", "潮州鎮", "東港鎮", "恆春鎮", "萬丹鄉", "長治鄉", "麟洛鄉", "九如鄉", "里港鄉", "鹽埔鄉", "高樹鄉", "萬巒鄉", "內埔鄉", "竹田鄉", "新埤鄉", "枋寮鄉", "新園鄉", "崁頂鄉", "林邊鄉", "南州鄉", "佳冬鄉", "琉球鄉", "車城鄉", "滿州鄉", "枋山鄉", "三地門鄉", "霧臺鄉", "瑪家鄉", "泰武鄉", "來義鄉", "春日鄉", "獅子鄉", "牡丹鄉"];	// 屏東縣
+                department[17]=["宜蘭市", "羅東鎮", "蘇澳鎮", "頭城鎮", "礁溪鄉", "壯圍鄉", "員山鄉", "冬山鄉", "五結鄉", "三星鄉", "大同鄉", "南澳鄉"];	// 宜蘭縣
+                department[18]=["花蓮市", "鳳林鎮", "玉里鎮", "新城鄉", "吉安鄉", "壽豐鄉", "光復鄉", "豐濱鄉", "瑞穗鄉", "富里鄉", "秀林鄉", "萬榮鄉", "卓溪鄉"];	// 花蓮縣
+                department[19]=["臺東市", "成功鎮", "關山鎮", "卑南鄉", "大武鄉", "太麻里鄉", "東河鄉", "長濱鄉", "鹿野鄉", "池上鄉", "綠島鄉", "延平鄉", "海端鄉", "達仁鄉", "金峰鄉", "蘭嶼鄉"];	// 臺東縣
+                department[20]=["馬公市", "湖西鄉", "白沙鄉", "西嶼鄉", "望安鄉", "七美鄉"];	// 澎湖縣
+                department[21]=["金城鎮", "金湖鎮", "金沙鎮", "金寧鄉", "烈嶼鄉", "烏坵鄉"];	// 金門縣
+                department[22]=["南竿鄉", "北竿鄉", "莒光鄉", "東引鄉"];	// 連江縣
+
+
+                function renew(index){
+                  for(var i=0;i<department[index].length;i++)
+                    document.mobileSurvey.town.options[i]=new Option(department[index][i], department[index][i]);	// 設定新選項
+                  document.mobileSurvey.town.length=department[index].length;	// 刪除多餘的選項
+                }
+
+                function redirectPage(surveyType) {
+                  if (surveyType=="TaiwanPublicUniversitiesHS"){
+                    return window.location.assign("https://tw-uni-pri-hs-adpt-dot-par2021.uk.r.appspot.com");  
+                  }else if(surveyType=="TaiwanPublicUniversitiesC"){
+                    return window.location.assign("https://tw-uni-pri-c-adpt-dot-par2021.uk.r.appspot.com");
+                  }else if(surveyType=="TaiwanPublicUniversitiesHSRandom"){
+                    return window.location.assign("https://tw-uni-pri-hs-rand-dot-par2021.uk.r.appspot.com");
+                  }else if(surveyType=="TaiwanPublicUniversitiesCRandom"){
+                    return window.location.assign("https://tw-uni-pri-c-rand-dot-par2021.uk.r.appspot.com");
+                  }else{
+                    return window.location.assign("https://itingt.github.io/mobilesurvey/end_page");                    
+                  }
+                }
+
+                function getSurveyType() {
+                  var x = Math.floor((Math.random()*10)+1)
+                  if (x >5){
+                  // TODO: return the surveyType string
+                  // “TaiwanPrivateUniversitiesHS”
+                  // “TaiwanPrivateUniversitiesHSRandom”
+                  // “TaiwanPublicUniversitiesHS”
+                  // “TaiwanPublicUniversitiesHSRandom”
+                  // “TaiwanPrivateUniversitiesC”
+                  // “TaiwanPrivateUniversitiesCRandom”
+                  // “TaiwanPublicUniversitiesC”
+                  // “TaiwanPublicUniversitiesCRandom”
+                    if ((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "sh")){                    
+                    return surveyType = "TaiwanPrivateUniversitiesHS";//在學高中生                    
+                    }else if((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "MS")){
+                    return surveyType = "TaiwanPrivateUniversitiesC";//在學碩士以上
+                    }else if((document.getElementById("inSchool").value == "No") & (document.getElementById("edu").value == "MS"|document.getElementById("edu").value == "uni")){
+                    return surveyType = "TaiwanPrivateUniversitiesC";//大學或以上畢業
+                    }else{
+                    return "NotParticipant";//非合格受訪者
+                    }
+                  }else{
+                    if ((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "sh")){                    
+                    return surveyType = "TaiwanPrivateUniversitiesHSRandom";//在學高中生                    
+                    }else if((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "MS")){
+                    return surveyType = "TaiwanPrivateUniversitiesCRandom";//在學碩士以上
+                    }else if((document.getElementById("inSchool").value == "No") & (document.getElementById("edu").value == "MS"|document.getElementById("edu").value == "uni")){
+                    return surveyType = "TaiwanPrivateUniversitiesCRandom";//大學或以上畢業
+                    }else{
+                    return "NotParticipant";//非合格受訪者
+                    } 
+                  }
+                }
+
+                function onSubmit() {
+                  
+                  const surveyType = getSurveyType();
+                  var formData = {
+                    // TODO: instead of getting the elements from the form, highly recommend changing it to
+                    // getting it directly from the input using either name or id.
+                    // This way when you make changes to the form in the future,
+                    // less work is needed.
+                    "phone" : document.getElementById("phone").value,
+                    "inSchool" : document.getElementById("inSchool").value,
+                    "edu" : document.getElementById("edu").value,
+                    "schoolName" : document.getElementById("schoolName").value,
+                    "major" : document.getElementById("major").value,
+                    "gender" : document.getElementById("gender").value,
+                    "age" : document.getElementById("age").value,
+                    "county" : document.getElementById("county").value,
+                    "town" : document.getElementById("town").value,
+                    "surveyGroup":  "TaiwanUniversities",
+                    "surveyType": surveyType,
+                  };
+
+                  
+
+                  var xhr = new XMLHttpRequest();
+                  xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
+                  xhr.setRequestHeader('Content-Type', 'application/json');
+                  xhr.onreadstatechange = () => redirectPage(surveyType);
+                  xhr.send(JSON.stringify(formData));
+                  console.log(formData);
+                }
+
+  </script>
+
+</html>
