@@ -7,7 +7,7 @@
     <div id=container>
         <form method="post" name="mobileSurvey" id="mobileSurvey">
             <h1>請輸入您收到問卷連結的手機號碼</h1>
-            <input type="text" name="phone" id="phone" placeholder="例：0900123456" required>
+            <input type="tel" name="phone" id="phone" placeholder="例：0900123456" required>
             <h1>請問您現在是否還在就學？</h1>
             <p><select name="inSchool" id="inSchool" required>
               <option value="Yes" selected> 是
@@ -45,7 +45,7 @@
             </select></p>
 
             <h1>請問您是民國哪一年出生的？</h1>
-            <input type="text" name="age" id="age" placeholder="例：80" required>
+            <input type="number" name="age" id="age" placeholder="例：80" required>
 
             <h1>請問您住在哪個縣市？</h1>
               <div>
@@ -188,21 +188,21 @@
                   // “TaiwanPrivateUniversitiesCRandom”
                   // “TaiwanPublicUniversitiesC”
                   // “TaiwanPublicUniversitiesCRandom”
-                    if ((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "sh")){                    
+                    if ((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "sh")){                    
                     return surveyType = "TaiwanPublicUniversitiesHS";//在學高中生                    
-                    }else if((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "MS")){
+                    }else if((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "MS")){
                     return surveyType = "TaiwanPublicUniversitiesC";//在學碩士以上
-                    }else if((document.getElementById("inSchool").value == "No") & (document.getElementById("edu").value == "MS"|document.getElementById("edu").value == "uni")){
+                    }else if((document.getElementById("inSchool").value == "No") && (document.getElementById("edu").value == "MS"||document.getElementById("edu").value == "uni")){
                     return surveyType = "TaiwanPublicUniversitiesC";//大學或以上畢業
                     }else{
                     return "NotParticipant";//非合格受訪者
                     }
                   }else{
-                    if ((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "sh")){                    
+                    if ((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "sh")){                    
                     return surveyType = "TaiwanPublicUniversitiesHSRandom";//在學高中生                    
-                    }else if((document.getElementById("inSchool").value == "Yes") & (document.getElementById("edu").value == "MS")){
+                    }else if((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "MS")){
                     return surveyType = "TaiwanPublicUniversitiesCRandom";//在學碩士以上
-                    }else if((document.getElementById("inSchool").value == "No") & (document.getElementById("edu").value == "MS"|document.getElementById("edu").value == "uni")){
+                    }else if((document.getElementById("inSchool").value == "No") && (document.getElementById("edu").value == "MS"||document.getElementById("edu").value == "uni")){
                     return surveyType = "TaiwanPublicUniversitiesCRandom";//大學或以上畢業
                     }else{
                     return "NotParticipant";//非合格受訪者
