@@ -190,21 +190,21 @@
                   // “TaiwanPublicUniversitiesC”
                   // “TaiwanPublicUniversitiesCRandom”
                     if ((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "sh")){                    
-                    return surveyType = "TaiwanPrivateUniversitiesHS";//在學高中生                    
+                    return "TaiwanPrivateUniversitiesHS";//在學高中生                    
                     }else if((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "MS")){
-                    return surveyType = "TaiwanPrivateUniversitiesC";//在學碩士以上
+                    return "TaiwanPrivateUniversitiesC";//在學碩士以上
                     }else if((document.getElementById("inSchool").value == "No") && (document.getElementById("edu").value == "MS"||document.getElementById("edu").value == "uni")){
-                    return surveyType = "TaiwanPrivateUniversitiesC";//大學或以上畢業
+                    return "TaiwanPrivateUniversitiesC";//大學或以上畢業
                     }else{
                     return "NotParticipant";//非合格受訪者
                     }
                   }else{
                     if ((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "sh")){                    
-                    return surveyType = "TaiwanPrivateUniversitiesHSRandom";//在學高中生                    
+                    return "TaiwanPrivateUniversitiesHSRandom";//在學高中生                    
                     }else if((document.getElementById("inSchool").value == "Yes") && (document.getElementById("edu").value == "MS")){
-                    return surveyType = "TaiwanPrivateUniversitiesCRandom";//在學碩士以上
+                    return "TaiwanPrivateUniversitiesCRandom";//在學碩士以上
                     }else if((document.getElementById("inSchool").value == "No") && (document.getElementById("edu").value == "MS"||document.getElementById("edu").value == "uni")){
-                    return surveyType = "TaiwanPrivateUniversitiesCRandom";//大學或以上畢業
+                    return "TaiwanPrivateUniversitiesCRandom";//大學或以上畢業
                     }else{
                     return "NotParticipant";//非合格受訪者
                     } 
