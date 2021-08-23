@@ -6,6 +6,7 @@
   <body>
     <div id=container>
         <form method="post" name="mobileSurvey" id="mobileSurvey">
+          <div class="pagetitle">
             <h1>請輸入您收到問卷連結的手機號碼</h1>
             <input type="tel" name="phone" id="phone" placeholder="例：0900123456" required>
             <h1>請問您現在是否還在就學？</h1>
@@ -47,8 +48,8 @@
             <h1>請問您是民國哪一年出生的？</h1>
             <input type="number" name="age" id="age" placeholder="例：80" required>
 
-            <h1>請問您住在哪個縣市？</h1>
-              <div>
+            
+              <h1>請問您住在哪個縣市？</h1>              
                 <p><select name = "county" id = "county" onChange="renew(this.selectedIndex);" required>
                   <option value="請選擇居住縣市" selected disabled>請選擇居住縣市
                   <option value="臺北市">臺北市
@@ -74,16 +75,17 @@
                   <option value="金門縣">金門縣
                   <option value="連江縣">連江縣
                 </select></p>
-              </div>
+              
 
-              <div  class="pagetitle">
+              
                 <p><h1>請問您住在哪個鄉/鎮／區？</h1>
                 <p><select name="town" id="town" required>
                     <option value="">請選取居住鄉鎮
                     </select></p>
-              </div>
+            </div>
 
               <center><p><button class="button" type="button" name ="submit" onclick="onSubmit()">確認</button></p></center>
+
         </form>>
 
     </div>
