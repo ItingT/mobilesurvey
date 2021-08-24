@@ -234,12 +234,33 @@
 
                   
 
-                  var xhr = new XMLHttpRequest();
-                  xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
-                  xhr.setRequestHeader('Content-Type', 'application/json');
-                  xhr.onreadstatechange = () => redirectPage(surveyType);
-                  xhr.send(JSON.stringify(formData));
-                  console.log(formData);
+                  if (document.getElementById("phone").value==""){
+                    alert ('請填寫手機號碼');
+                  }else if(document.getElementById("inSchool").value=="請選擇"){
+                    alert ('請填寫是否仍在學');
+                  }else if(document.getElementById("edu").value=="請選擇"){
+                    alert ('請選擇您的最高學歷');
+                  }else if(document.getElementById("schoolName").value==""){
+                    alert ('請填寫學校名稱');
+                  }else if(document.getElementById("major").value==""){
+                    alert ('請填寫就讀系所');
+                  }else if(document.getElementById("gender").value=="請選擇"){
+                    alert ('請填寫您的性別');
+                  }else if(document.getElementById("age").value==""){
+                    alert ('請填寫出生年次');
+                  }else if(document.getElementById("county").value=="請選擇居住縣市"){
+                    alert ('請選擇居住縣市');
+                  }else if(document.getElementById("town").value=="請選擇居住鄉鎮"){
+                    alert ('請選擇居住鄉鎮');
+                  }else{
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "https://backend-dot-par2021.uk.r.appspot.com/background-data", true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onreadstatechange = () => redirectPage(surveyType);
+                    xhr.send(JSON.stringify(formData));
+                    redirectPage(surveyType);
+                    console.log(formData);
+                  }
                 }
 
   </script>
